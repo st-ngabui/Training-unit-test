@@ -4,8 +4,8 @@
   "description": "react typescript boilerplate",
   "main": "index.js",
   "scripts": {
+    "test": "jest",
     "preinstall": "npx npm-force-resolutions",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --output-pathinfo --progress",
     "build": "npx webpack --env NODE_ENV=production",
     "build.dev": "npx webpack --env NODE_ENV=dev",
