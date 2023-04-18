@@ -3,7 +3,6 @@ import { AuthStorageService } from './authStorage.service';
 describe('test auth service', () => {
   const authStorageService = new AuthStorageService();
   jest.spyOn(Storage.prototype, 'getItem');
-  Storage.prototype.getItem = jest.fn();
   it('getToken is called', () => {
     jest.spyOn(Storage.prototype, 'getItem');
     Storage.prototype.getItem = jest.fn();
