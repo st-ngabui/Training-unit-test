@@ -90,7 +90,8 @@ describe('test UserList component', () => {
       expect(screen.getByTestId('list-user')).toBeInTheDocument();
       expect(screen.getAllByTestId('user')).toHaveLength(2);
       arr.forEach(item => {
-        expect(expect(screen.getByTestId(`user-${item.id}`)).toBeInTheDocument());
+        expect(screen.getByTestId(`user-${item.id}`)).toBeInTheDocument();
+        expect(screen.getByTestId(`user-${item.id}`)).toHaveAttribute('href', `/users/${item.id}`);
       });
     });
     test('delete sucess', async() => {
