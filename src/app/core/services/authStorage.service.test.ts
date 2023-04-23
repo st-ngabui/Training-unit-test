@@ -11,7 +11,14 @@ describe('test auth service', () => {
     expect(localStorage.getItem).toBeCalledWith('token');
   });
 
-  it('setToken is called', () => {
+  it('setToken is called with empty token', () => {
+    jest.spyOn(Storage.prototype, 'setItem');
+    Storage.prototype.setItem = jest.fn();
+    authStorageService.setToken('');
+    expect(localStorage.setItem).not.toBeCalled();
+  });
+
+  it('setToken is called with not empty token', () => {
     jest.spyOn(Storage.prototype, 'setItem');
     Storage.prototype.setItem = jest.fn();
     authStorageService.setToken('token');
