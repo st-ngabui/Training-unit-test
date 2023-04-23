@@ -28,17 +28,6 @@ export const Header = (): JSX.Element => {
           </li>
         </ul>
       </nav>
-      <ul className="menu menu-lang">
-        {LANGUAGES.map((lang: string) => {
-          return (
-            <li className="menu-item" key={lang}>
-              <button className="menu-action" onClick={() => changeLang(lang)}>
-                {lang.toUpperCase()}
-              </button>
-            </li>
-          );
-        })}
-      </ul>
     </header>
   );
-}
+};
