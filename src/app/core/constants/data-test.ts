@@ -1,6 +1,6 @@
 import { Product } from '../models/Product';
 
-export const product1 = {
+export const apple = {
   id: '1',
   name: 'apple',
   price: 15000,
@@ -17,9 +17,7 @@ export const product1 = {
   ]
 };
 
-export const productList: Product[] = [product1];
-
-export const product2: Product = {
+export const orange: Product = {
   id: '2',
   name: 'orrange',
   price: 27000,
@@ -36,7 +34,7 @@ export const product2: Product = {
   ]
 };
 
-export const product2Update: Product = {
+export const orangeUpdate: Product = {
   id: '2',
   name: 'orrange',
   price: 28000,
@@ -49,6 +47,23 @@ export const product2Update: Product = {
     {
       percent: 20,
       number: 6,
+    }
+  ]
+};
+
+export const appleUpdate: Product = {
+  id: '1',
+  name: 'apple',
+  price: 15000,
+  number: 10,
+  discount: [
+    {
+      percent: 5,
+      number: 2,
+    },
+    {
+      percent: 10,
+      number: 5,
     }
   ]
 };

@@ -3,12 +3,39 @@ type Discount = {
   number: number;
 }
 
-export type Product = {
+export interface Product {
   id: string;
   name: string;
   price: number;
   number: number;
   discount: Discount[];
+}
+
+class ProductOrder implements Product {
+  id: string;
+  name: string;
+  price: number;
+  number: number;
+  discount: Discount[];
+  constructor(data: Product) {
+    this.id = data.id;
+    this.name = data.name;
+    this.price = data.price;
+    this.number = data.number;
+    this.discount = [...data.discount];
+  }
+  getAppliedDiscount() {
+    let discount = 0;
+      this.discount.forEach((item: Discount) => {
+        if (this.number >= item.number && item.percent > discount) {
+          discount = item.percent;
+        }
+      });
+    return discount;
+  }
+  getTotalPrice() {
+    return this.price * this.number * (100 - this.getAppliedDiscount()) / 100;
+  }
 }
 
 export class Order {
@@ -42,13 +69,8 @@ export class Order {
 
   getTotalPayment() {
     return this.productList.reduce((sum, product: Product) => {
-      let discount = 0;
-      product.discount.forEach((item: Discount) => {
-        if (product.number >= item.number && item.percent > discount) {
-          discount = item.percent;
-        }
-      });
-      return sum + product.price * product.number * (100 - discount) / 100;
+      const productOrder = new ProductOrder(product);
+      return sum + productOrder.getTotalPrice();
     }, 0);
   }
 
